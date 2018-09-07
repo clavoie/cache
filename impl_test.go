@@ -69,4 +69,10 @@ func TestImpl(t *testing.T) {
 	if err == nil {
 		t.Fatal("Was expecting error")
 	}
+
+	_, err = c.Get(key+"x", cacheDuration, genFn)
+
+	if err == nil {
+		t.Fatal("Was expecting error")
+	}
 }
