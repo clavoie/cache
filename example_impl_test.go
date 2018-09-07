@@ -24,7 +24,13 @@ func NewCache() *AddressCache {
 }
 
 func (ac *AddressCache) Get(key string) (*Address, error) {
-	return ac.cache.Get(key, ac.cacheDuration, ac.generateAddress)
+	val, err := ac.cache.Get(key, ac.cacheDuration, ac.generateAddress)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return val.(*Address), nil
 }
 
 func (ac *AddressCache) generateAddress() (interface{}, error) {

@@ -12,7 +12,6 @@ func TestImpl(t *testing.T) {
 	var genErr error
 	var val int
 	cacheDuration := time.Second
-	// expireDuration := cacheDuration + 1
 	key := "key"
 
 	genFn := func() (interface{}, error) {
@@ -65,7 +64,7 @@ func TestImpl(t *testing.T) {
 	time.Sleep(cacheDuration)
 	genErr = errors.New("gen error")
 
-	cacheVal, err = c.Get(key, cacheDuration, genFn)
+	_, err = c.Get(key, cacheDuration, genFn)
 
 	if err == nil {
 		t.Fatal("Was expecting error")

@@ -8,6 +8,6 @@ import "github.com/clavoie/di"
 // wrap Impl in another struct with a longer lifetime.
 func NewDiDefs() []*di.Def {
 	return []*di.Def{
-		&di.Def{NewImpl, di.PerDependency},
+		{NewImpl, di.PerDependency},
 	}
 }
