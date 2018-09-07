@@ -45,7 +45,7 @@ import "github.com/clavoie/di"
 
 func NewDiDefs() []*di.Def {
   return []*di.Def{
-    // assume ConfigCache is wrapper in an interface at this point
+    // assume ConfigCache is wrapped in an interface at this point
     {NewConfigCache, di.Singleton},
   }
 }
