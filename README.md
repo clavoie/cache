@@ -44,18 +44,18 @@ package your_package
 import "github.com/clavoie/di"
 
 func NewDiDefs() []*di.Def {
-	return []*di.Def{
+  return []*di.Def{
     // assume ConfigCache is wrapper in an interface at this point
-		{NewConfigCache, di.Singleton},
-	}
+    {NewConfigCache, di.Singleton},
+  }
 }
 
 // main.go
-	httpResolver, err = di.NewResolver(onResolveErr,
-		your_package.NewDiDefs(),
-    cache.NewDiDefs(),
-    // etc
-  )
+httpResolver, err = di.NewResolver(onResolveErr,
+  your_package.NewDiDefs(),
+  cache.NewDiDefs(),
+  // etc
+)
   
 // your_handler.go
 func YourHandler(configCache your_package.ConfigCache) {
